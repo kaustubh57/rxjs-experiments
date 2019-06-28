@@ -5,3 +5,7 @@
 ## Reference
 - Observable
 - subscribe
+- Subject
+- next
+- error
+- complete

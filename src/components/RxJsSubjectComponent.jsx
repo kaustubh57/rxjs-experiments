@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Observable} from 'rxjs';
+import React, { Component } from 'react';
+import { Observable, Subject } from 'rxjs';
 
 class RxJsSubjectComponent extends Component {
 
@@ -8,10 +8,16 @@ class RxJsSubjectComponent extends Component {
   }
 
   componentDidMount() {
+    this.tryObservable();
+    this.trySubject();
+  }
+
+  tryObservable() {
     this.observable$ = Observable.create(observer => {
-      observer.next(1);
-      observer.next(2);
-      observer.next(3);
+      observer.next('observable >>> ' + 1);
+      //observer.complete();
+      observer.next('observable >>> ' + 2);
+      observer.next('observable >>> ' + 3);
       observer.complete();
     });
 
@@ -23,8 +29,20 @@ class RxJsSubjectComponent extends Component {
     );
   }
 
+  trySubject() {
+    this.mySubject$ = new Subject();
+    this.mySubject$.subscribe(value => console.log('first $ ' + value));
+    this.mySubject$.next('subject >>> ' + 1);
+    this.mySubject$.next('subject >>> ' + 2);
+    // this.mySubject$.complete();
+
+    this.mySubject$.subscribe(value => console.log('second $ ' + value));
+    this.mySubject$.next('subject >>> ' + 3);
+  }
+
   componentWillUnmount() {
     this.observable$.unsubscribe();
+    this.mySubject$.unsubscribe();
   }
 
   render() {
