@@ -3,10 +3,6 @@ import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 
 class RxJsObservableComponent extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.tryObservable();
     this.trySubject();
@@ -31,17 +27,6 @@ class RxJsObservableComponent extends Component {
     );
   }
 
-  tryBehaviorSubject() {
-    this.myBehaviorSubject$ = new BehaviorSubject(200);
-    this.myBehaviorSubject$.subscribe(value => console.log('first $ ' + value));
-    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 1);
-    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 2);
-    // this.myBehaviorSubject$.complete();
-
-    this.myBehaviorSubject$.subscribe(value => console.log('second $ ' + value));
-    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 3);
-  }
-
   trySubject() {
     this.mySubject$ = new Subject();
     this.mySubject$.subscribe(value => console.log('first $ ' + value));
@@ -51,6 +36,17 @@ class RxJsObservableComponent extends Component {
 
     this.mySubject$.subscribe(value => console.log('second $ ' + value));
     this.mySubject$.next('subject >>> ' + 3);
+  }
+
+  tryBehaviorSubject() {
+    this.myBehaviorSubject$ = new BehaviorSubject(200);
+    this.myBehaviorSubject$.subscribe(value => console.log('first $ ' + value));
+    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 1);
+    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 2);
+    // this.myBehaviorSubject$.complete();
+
+    this.myBehaviorSubject$.subscribe(value => console.log('second $ ' + value));
+    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 3);
   }
 
   tryReplaySubject() {
@@ -67,6 +63,8 @@ class RxJsObservableComponent extends Component {
   componentWillUnmount() {
     this.observable$.unsubscribe();
     this.mySubject$.unsubscribe();
+    this.myBehaviorSubject$.unsubscribe();
+    this.myReplaySubject$.unsubscribe();
   }
 
   render() {

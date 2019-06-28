@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import RxJsObservableComponent from "./components/RxJsObservableComponent";
+import RxJsObservableComponent from './components/RxJsObservableComponent';
+import RxJsOperatorComponent from './components/RxJsOperatorComponent';
 
 function App() {
   return (
     <div>
       <div className="App">
-        React Project...
+        RxJs Learning Project...
       </div>
       <RxJsObservableComponent/>
+      <RxJsOperatorComponent/>
     </div>
   );
 }

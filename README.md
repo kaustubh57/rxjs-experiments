@@ -11,3 +11,6 @@
 - complete
 - BehaviorSubject
 - ReplaySubject
+- interval
+- pipe
+- take
