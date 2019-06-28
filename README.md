@@ -19,3 +19,5 @@
 - take
 - map
 - filter
+- of
+- mergeMap
