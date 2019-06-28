@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 class RxJsSubjectComponent extends Component {
 
@@ -10,6 +10,7 @@ class RxJsSubjectComponent extends Component {
   componentDidMount() {
     this.tryObservable();
     this.trySubject();
+    this.tryBehaviorSubject();
   }
 
   tryObservable() {
@@ -25,8 +26,19 @@ class RxJsSubjectComponent extends Component {
       value => console.log(value),
       err => {
       },
-      () => console.log('this is the end...')
+      () => console.log('observable this is the end...')
     );
+  }
+
+  tryBehaviorSubject() {
+    this.myBehaviorSubject$ = new BehaviorSubject(200);
+    this.myBehaviorSubject$.subscribe(value => console.log('first $ ' + value));
+    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 1);
+    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 2);
+    // this.myBehaviorSubject$.complete();
+
+    this.myBehaviorSubject$.subscribe(value => console.log('second $ ' + value));
+    this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 3);
   }
 
   trySubject() {

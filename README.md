@@ -9,3 +9,4 @@
 - next
 - error
 - complete
+- BehaviorSubject
