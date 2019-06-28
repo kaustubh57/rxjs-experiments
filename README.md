@@ -10,3 +10,4 @@
 - error
 - complete
 - BehaviorSubject
+- ReplaySubject

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 
 class RxJsSubjectComponent extends Component {
 
@@ -11,6 +11,7 @@ class RxJsSubjectComponent extends Component {
     this.tryObservable();
     this.trySubject();
     this.tryBehaviorSubject();
+    this.tryReplaySubject();
   }
 
   tryObservable() {
@@ -50,6 +51,17 @@ class RxJsSubjectComponent extends Component {
 
     this.mySubject$.subscribe(value => console.log('second $ ' + value));
     this.mySubject$.next('subject >>> ' + 3);
+  }
+
+  tryReplaySubject() {
+    this.myReplaySubject$ = new ReplaySubject();
+    this.myReplaySubject$.subscribe(value => console.log('first $ ' + value));
+    this.myReplaySubject$.next('ReplaySubject >>> ' + 1);
+    this.myReplaySubject$.next('ReplaySubject >>> ' + 2);
+    // this.myReplaySubject$.complete();
+
+    this.myReplaySubject$.subscribe(value => console.log('second $ ' + value));
+    this.myReplaySubject$.next('ReplaySubject >>> ' + 3);
   }
 
   componentWillUnmount() {
