@@ -4,13 +4,18 @@
 
 ## Reference
 - Observable
-- subscribe
 - Subject
+- BehaviorSubject
+- ReplaySubject
+- subscribe
+- unsubscribe
 - next
 - error
 - complete
-- BehaviorSubject
-- ReplaySubject
+
+## Operators
 - interval
 - pipe
 - take
+- map
+- filter
