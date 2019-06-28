@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 
-class RxJsSubjectComponent extends Component {
+class RxJsObservableComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -70,8 +70,8 @@ class RxJsSubjectComponent extends Component {
   }
 
   render() {
-    return (<div>RxJsSubjectComponent</div>);
+    return (<div>RxJsObservableComponent</div>);
   }
 }
 
-export default RxJsSubjectComponent;
+export default RxJsObservableComponent;

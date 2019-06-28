@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import RxJsSubjectComponent from "./components/RxJsSubjectComponent";
+import RxJsObservableComponent from "./components/RxJsObservableComponent";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <div className="App">
         React Project...
       </div>
-      <RxJsSubjectComponent/>
+      <RxJsObservableComponent/>
     </div>
   );
 }
