@@ -5,26 +5,26 @@ class RxJsSubjectComponent extends Component {
 
   constructor(props) {
     super(props);
+  }
 
-    let observable$ = Observable.create(observer => {
+  componentDidMount() {
+    this.observable$ = Observable.create(observer => {
       observer.next(1);
       observer.next(2);
       observer.next(3);
       observer.complete();
     });
 
-    observable$.subscribe(
+    this.observable$.subscribe(
       value => console.log(value),
       err => {
       },
       () => console.log('this is the end...')
-    )
-  }
-
-  componentDidMount() {
+    );
   }
 
   componentWillUnmount() {
+    this.observable$.unsubscribe();
   }
 
   render() {
