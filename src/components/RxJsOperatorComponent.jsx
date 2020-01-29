@@ -6,7 +6,6 @@ class RxJsOperatorComponent extends Component {
 
   componentDidMount() {
     this.initTestData();
-
     this.tryTakeOperator();
     this.tryMapOperator();
     this.tryFilterOperator();
@@ -14,12 +13,11 @@ class RxJsOperatorComponent extends Component {
   }
 
   componentWillUnmount() {
-    this.letters$.unsubscribe();
-
-    this.takeOperator$.unsubscribe();
-    this.mapOperator$.unsubscribe();
-    this.filterOperator$.unsubscribe();
-    this.mergeMapOperator$.unsubscribe();
+    this.letters$ && this.letters$.unsubscribe();
+    this.takeOperator$ && this.takeOperator$.unsubscribe();
+    this.mapOperator$ && this.mapOperator$.unsubscribe();
+    this.filterOperator$ && this.filterOperator$.unsubscribe();
+    this.mergeMapOperator$ && this.mergeMapOperator$.unsubscribe();
   }
 
   initTestData() {

@@ -4,14 +4,14 @@ import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 class RxJsObservableComponent extends Component {
 
   componentDidMount() {
-    this.tryObservable();
+    // this.tryObservable();
     this.trySubject();
-    this.tryBehaviorSubject();
-    this.tryReplaySubject();
+    // this.tryBehaviorSubject();
+    // this.tryReplaySubject();
   }
 
   tryObservable() {
-    this.observable$ = Observable.create(observer => {
+    this.observable$ = new Observable(observer => {
       observer.next('observable >>> ' + 1);
       //observer.complete();
       observer.next('observable >>> ' + 2);
