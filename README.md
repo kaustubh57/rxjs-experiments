@@ -21,3 +21,4 @@
 - filter
 - of
 - mergeMap
+- switchMap

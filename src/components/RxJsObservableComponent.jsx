@@ -4,13 +4,17 @@ import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 class RxJsObservableComponent extends Component {
 
   componentDidMount() {
-    // this.tryObservable();
-    this.trySubject();
-    // this.tryBehaviorSubject();
-    // this.tryReplaySubject();
+
   }
 
-  tryObservable() {
+  componentWillUnmount() {
+    this.observable$ && this.observable$.unsubscribe();
+    this.mySubject$ && this.mySubject$.unsubscribe();
+    this.myBehaviorSubject$ && this.myBehaviorSubject$.unsubscribe();
+    this.myReplaySubject$ && this.myReplaySubject$.unsubscribe();
+  }
+
+  tryObservable = () => {
     this.observable$ = new Observable(observer => {
       observer.next('observable >>> ' + 1);
       //observer.complete();
@@ -25,9 +29,9 @@ class RxJsObservableComponent extends Component {
       },
       () => console.log('observable this is the end...')
     );
-  }
+  };
 
-  trySubject() {
+  trySubject = () => {
     this.mySubject$ = new Subject();
     this.mySubject$.subscribe(value => console.log('first $ ' + value));
     this.mySubject$.next('subject >>> ' + 1);
@@ -36,9 +40,9 @@ class RxJsObservableComponent extends Component {
 
     this.mySubject$.subscribe(value => console.log('second $ ' + value));
     this.mySubject$.next('subject >>> ' + 3);
-  }
+  };
 
-  tryBehaviorSubject() {
+  tryBehaviorSubject = () => {
     this.myBehaviorSubject$ = new BehaviorSubject(200);
     this.myBehaviorSubject$.subscribe(value => console.log('first $ ' + value));
     this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 1);
@@ -47,9 +51,9 @@ class RxJsObservableComponent extends Component {
 
     this.myBehaviorSubject$.subscribe(value => console.log('second $ ' + value));
     this.myBehaviorSubject$.next('BehaviorSubject >>> ' + 3);
-  }
+  };
 
-  tryReplaySubject() {
+  tryReplaySubject = () => {
     this.myReplaySubject$ = new ReplaySubject();
     this.myReplaySubject$.subscribe(value => console.log('first $ ' + value));
     this.myReplaySubject$.next('ReplaySubject >>> ' + 1);
@@ -58,17 +62,19 @@ class RxJsObservableComponent extends Component {
 
     this.myReplaySubject$.subscribe(value => console.log('second $ ' + value));
     this.myReplaySubject$.next('ReplaySubject >>> ' + 3);
-  }
-
-  componentWillUnmount() {
-    this.observable$.unsubscribe();
-    this.mySubject$.unsubscribe();
-    this.myBehaviorSubject$.unsubscribe();
-    this.myReplaySubject$.unsubscribe();
-  }
+  };
 
   render() {
-    return (<div>RxJsObservableComponent</div>);
+    return (
+      <div>RxJsObservableComponent (see console log):
+        <div>
+          <button onClick={this.tryObservable}>Run Observable Experiment</button>
+          <button onClick={this.trySubject}>Run Subject Experiment</button>
+          <button onClick={this.tryBehaviorSubject}>Run Behavior Subject Experiment</button>
+          <button onClick={this.tryReplaySubject}>Run Replay Subject Experiment</button>
+        </div>
+      </div>
+    );
   }
 }
 
